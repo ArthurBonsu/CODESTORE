@@ -1,0 +1,91 @@
+Android
+Passing different data through Intent in Activity
+
+Example
+#
+1. Passing integer data:
+
+SenderActivity
+
+Intent myIntent = new Intent(SenderActivity.this, ReceiverActivity.class);
+myIntent.putExtra("intVariableName", intValue);
+startActivity(myIntent);
+ReceiverActivity
+
+Intent mIntent = getIntent();
+int intValue = mIntent.getIntExtra("intVariableName", 0); // set 0 as the default value if no value for intVariableName found
+2. Passing double data:
+
+SenderActivity
+
+Intent myIntent = new Intent(SenderActivity.this, ReceiverActivity.class);
+myIntent.putExtra("doubleVariableName", doubleValue);
+startActivity(myIntent);
+ReceiverActivity
+
+Intent mIntent = getIntent();
+double doubleValue = mIntent.getDoubleExtra("doubleVariableName", 0.00); // set 0.00 as the default value if no value for doubleVariableName found
+3. Passing String data:
+
+SenderActivity
+
+Intent myIntent = new Intent(SenderActivity.this, ReceiverActivity.class);
+myIntent.putExtra("stringVariableName", stringValue);
+startActivity(myIntent);
+ReceiverActivity
+
+Intent mIntent = getIntent();
+String stringValue = mIntent.getExtras().getString("stringVariableName");
+or
+
+Intent mIntent = getIntent();
+String stringValue = mIntent.getStringExtra("stringVariableName");
+4. Passing ArrayList data :
+
+SenderActivity
+
+Intent myIntent = new Intent(SenderActivity.this, ReceiverActivity.class);
+myIntent.putStringArrayListExtra("arrayListVariableName", arrayList);
+startActivity(myIntent);
+ReceiverActivity
+
+Intent mIntent = getIntent();
+arrayList = mIntent.getStringArrayListExtra("arrayListVariableName");
+5. Passing Object data :
+
+SenderActivity
+
+Intent myIntent = new Intent(SenderActivity.this, ReceiverActivity.class);
+myIntent.putExtra("ObjectVariableName", yourObject);
+startActivity(myIntent);
+ReceiverActivity
+
+Intent mIntent = getIntent();
+yourObj = mIntent.getSerializableExtra("ObjectVariableName");
+Note : Keep in mind your custom Class must implement the Serializable interface.
+
+6. Passing HashMap<String, String> data :
+
+SenderActivity
+
+HashMap<String, String> hashMap;
+
+Intent mIntent = new Intent(SenderActivity.this, ReceiverActivity.class);
+mIntent.putExtra("hashMap", hashMap);
+startActivity(mIntent);
+ReceiverActivity
+
+Intent mIntent = getIntent();    
+HashMap<String, String> hashMap = (HashMap<String, String>)
+mIntent.getSerializableExtra("hashMap");
+7. Passing Bitmap data :
+
+SenderActivity
+
+Intent myIntent = new Intent(SenderActivity.this, ReceiverActivity.class);
+myIntent.putExtra("image",bitmap);
+startActivity(mIntent);
+ReceiverActivity
+
+Intent mIntent = getIntent();
+Bitmap bitmap = mIntent.getParcelableExtra("image");
